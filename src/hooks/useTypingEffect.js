@@ -11,23 +11,24 @@ function useTypingEffect(words = [], typingSpeed = 100, deletingSpeed = 50, paus
 
   useEffect(() => {
     const currentWord = words[wordIndex]
+    let timeout
 
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        if (text.length < currentWord.length) {
-          setText(currentWord.slice(0, text.length + 1))
-        } else {
-          setTimeout(() => setIsDeleting(true), pauseDuration)
-        }
+    if (!isDeleting) {
+      if (text.length < currentWord.length) {
+        timeout = setTimeout(() => setText(currentWord.slice(0, text.length + 1)), typingSpeed)
       } else {
-        if (text.length > 0) {
-          setText(currentWord.slice(0, text.length - 1))
-        } else {
+        timeout = setTimeout(() => setIsDeleting(true), pauseDuration)
+      }
+    } else {
+      if (text.length > 0) {
+        timeout = setTimeout(() => setText(currentWord.slice(0, text.length - 1)), deletingSpeed)
+      } else {
+        timeout = setTimeout(() => {
           setIsDeleting(false)
           setWordIndex((prev) => (prev + 1) % words.length)
-        }
+        }, 0)
       }
-    }, isDeleting ? deletingSpeed : typingSpeed)
+    }
 
     return () => clearTimeout(timeout)
   }, [text, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseDuration])

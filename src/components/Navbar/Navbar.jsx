@@ -5,22 +5,16 @@ import { navLinks } from '../../data/navLinks'
 import './Navbar.css'
 
 function Navbar() {
-  const { scrollDirection, isScrolled } = useScrollDirection()
+  const { isScrolled } = useScrollDirection()
   const activeSection = useActiveSection(navLinks.map((link) => link.id))
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const handleLinkClick = () => setIsMenuOpen(false)
 
   return (
-    <header
-      className={`navbar ${scrollDirection === 'down' ? 'navbar--hidden' : ''} ${
-        isScrolled ? 'navbar--scrolled' : ''
-      }`}
-    >
+    <header className={`navbar navbar-enter ${isScrolled ? 'navbar--scrolled' : ''}`}>
       <nav className="navbar__container">
-        <a href="#home" className="navbar__logo gradient-text">
-          YourName
-        </a>
+        <a href="#home" className="navbar__logo gradient-text">LA</a>
 
         <ul className="navbar__links">
           {navLinks.map((link) => (
