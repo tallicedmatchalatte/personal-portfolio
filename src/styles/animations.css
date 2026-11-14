@@ -62,18 +62,7 @@
 }
 
 
-/* ============================================================
-   PROFILE PHOTO FLOAT
-   Apply .float to the about-mini__photo-wrap img.
-   ============================================================ */
-.float {
-  animation: floatPhoto 5s ease-in-out infinite;
-}
-
-@keyframes floatPhoto {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-8px); }
-}
+/* floatPhoto animation removed — photo is now static */
 
 
 /* ============================================================
@@ -139,7 +128,7 @@
    ============================================================ */
 .exp-card:hover,
 .cert-card:hover {
-  box-shadow: 0 8px 32px rgba(79, 70, 229, 0.12), var(--shadow-card-hover);
+  box-shadow: 0 8px 32px rgba(90, 159, 104, 0.15), var(--shadow-card-hover);
 }
 
 

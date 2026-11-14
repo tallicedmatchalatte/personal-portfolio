@@ -1,13 +1,15 @@
 import { contactInfo } from '../../data/contactInfo'
 import { FiMail, FiLinkedin, FiPhone, FiDownload } from 'react-icons/fi'
+import { FaFacebookF } from 'react-icons/fa'
 import './Contact.css'
 
 function Contact() {
   return (
     <section id="contact" className="contact">
       <div className="contact__container">
+        <span className="section-label">// contact</span>
         <h2 className="contact__heading">
-          Get In <span className="gradient-text">Touch</span>
+          Get In <span className="highlight">Touch</span>
         </h2>
         <p className="contact__subheading">
           I'm currently looking for internship opportunities — feel free to reach out.
@@ -24,6 +26,12 @@ function Contact() {
             <FiLinkedin className="contact-card__icon" />
             <span className="contact-card__label">LinkedIn</span>
             <span className="contact-card__value">Connect with me</span>
+          </a>
+
+          <a href={contactInfo.facebook} target="_blank" rel="noopener noreferrer" className="contact-card glass-card">
+            <FaFacebookF className="contact-card__icon" />
+            <span className="contact-card__label">Facebook</span>
+            <span className="contact-card__value">Add me as a friend</span>
           </a>
 
           <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} className="contact-card glass-card">

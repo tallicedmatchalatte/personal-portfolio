@@ -1,5 +1,7 @@
 .certifications {
   padding: var(--space-2xl) var(--space-md);
+  background: var(--color-bg-canvas);
+  border-top: 1px solid var(--color-border);
 }
 
 .certifications__container {
@@ -10,13 +12,15 @@
 .certifications__heading {
   font-size: var(--fs-3xl);
   font-weight: 800;
+  letter-spacing: -0.03em;
   text-align: center;
   margin-bottom: var(--space-xs);
 }
 
 .certifications__subheading {
   text-align: center;
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
   margin-bottom: var(--space-xl);
 }
 
@@ -24,19 +28,24 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--space-md);
+  align-items: stretch;
 }
 
 .cert-card {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background: var(--color-bg-primary);
+  height: 100%;
 }
 
 .cert-card__image-wrap {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  background: var(--color-bg-secondary);
+  height: 200px;          /* fixed height — all cards identical */
+  background: var(--color-bg-tertiary);
   overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
 }
 
 .cert-card__image {
@@ -48,7 +57,7 @@
 }
 
 .cert-card:hover .cert-card__image {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .cert-card__body {
@@ -56,10 +65,12 @@
 }
 
 .cert-card__name {
-  font-size: var(--fs-base);
+  font-size: var(--fs-sm);
   font-weight: 700;
   margin-bottom: 0.4rem;
-  line-height: 1.4;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
 }
 
 .cert-card__meta {
@@ -72,19 +83,20 @@
 .cert-card__verify {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: var(--fs-sm);
-  font-weight: 500;
-  color: var(--color-accent-primary);
-  transition: var(--transition-fast);
+  gap: 0.35rem;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1px;
+  transition: border-color var(--transition-fast), gap var(--transition-fast);
 }
 
 .cert-card__verify:hover {
-  gap: 0.6rem;
+  border-color: var(--color-text-primary);
+  gap: 0.55rem;
 }
 
 @media (max-width: 640px) {
-  .certifications__heading {
-    font-size: var(--fs-2xl);
-  }
+  .certifications__heading { font-size: var(--fs-2xl); }
 }

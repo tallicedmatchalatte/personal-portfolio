@@ -13,7 +13,6 @@ function ProjectCard({ project }) {
   const cardContent = (
     <>
       <div className="project-card__image-wrap">
-        <img src={project.image} alt={project.title} className="project-card__image" loading="lazy" />
         <span className={`status-badge ${statusClassMap[project.status]}`}>{project.status}</span>
       </div>
 

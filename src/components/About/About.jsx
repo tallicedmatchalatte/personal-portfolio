@@ -2,28 +2,51 @@ import { aboutSummary } from '../../data/aboutData'
 import RevealOnScroll from '../common/RevealOnScroll/RevealOnScroll'
 import './About.css'
 
+const chips = [
+  { label: 'Degree',       value: 'BSIT' },
+  { label: 'School',       value: 'LCUP' },
+  { label: 'Year',         value: '2nd Year' },
+  { label: 'Focus',        value: 'UI/UX + Data' },
+  { label: 'Status',       value: 'Open to Internship' },
+]
+
 function About() {
   return (
     <section id="about" className="about-mini">
       <div className="about-mini__container">
         <RevealOnScroll>
+          <div style={{ textAlign: 'center' }}>
+            <span className="section-label">// about</span>
+          </div>
           <h2 className="about-mini__heading">
-            About <span className="gradient-text">Me</span>
+            About <span className="highlight">Me</span>
           </h2>
         </RevealOnScroll>
 
         <RevealOnScroll delay="0.1s">
           <div className="about-mini__body">
-            <div className="about-mini__photo-wrap">
-              <img src={aboutSummary.photo} alt="Profile" className="about-mini__photo" />
+
+            {/* Photo */}
+            <div className="about-mini__photo-frame">
+              <div className="about-mini__photo-bg" />
+              <img
+                src={aboutSummary.photo}
+                alt="Leon Antonio Puerto"
+                className="about-mini__photo"
+              />
             </div>
 
+            {/* Content */}
             <div className="about-mini__content">
               <p className="about-mini__bio">{aboutSummary.bio}</p>
 
-              <div className="about-mini__pills pills-enter">
-                {aboutSummary.skills.map((skill) => (
-                  <span key={skill} className="about-mini__pill">{skill}</span>
+              {/* Info chips — replaces redundant tech pills */}
+              <div className="about-mini__chips">
+                {chips.map((c) => (
+                  <div key={c.label} className="about-chip">
+                    <span className="about-chip__label">{c.label}</span>
+                    <span className="about-chip__value">{c.value}</span>
+                  </div>
                 ))}
               </div>
 
@@ -34,7 +57,6 @@ function About() {
                     {aboutSummary.education.school} · {aboutSummary.education.duration}
                   </p>
                 </div>
-
                 <div className="about-mini__item">
                   <p className="about-mini__item-title">{aboutSummary.organization.role}</p>
                   <p className="about-mini__item-meta">
@@ -43,6 +65,7 @@ function About() {
                 </div>
               </div>
             </div>
+
           </div>
         </RevealOnScroll>
       </div>

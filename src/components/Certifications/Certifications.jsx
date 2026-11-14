@@ -8,8 +8,9 @@ function Certifications() {
     <section id="certifications" className="certifications">
       <div className="certifications__container">
         <RevealOnScroll>
+          <span className="section-label">// certifications</span>
           <h2 className="certifications__heading">
-            My <span className="gradient-text">Certifications</span>
+            My <span className="highlight">Certifications</span>
           </h2>
           <p className="certifications__subheading">Credentials that back up what I know</p>
         </RevealOnScroll>

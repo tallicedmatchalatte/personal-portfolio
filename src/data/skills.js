@@ -1,41 +1,44 @@
+// Devicons CDN — we render all icons in monochrome via CSS filter
+const CDN = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons'
+
 export const skillCategories = [
   {
     id: 'programming',
     title: 'Programming',
     skills: [
-      { name: 'JavaScript', level: 75 },
-      { name: 'HTML', level: 90 },
-      { name: 'CSS', level: 85 },
-      { name: 'SQL', level: 70 },
-      { name: 'Python', level: 40 },
+      { name: 'HTML',       icon: `${CDN}/html5/html5-original.svg` },
+      { name: 'CSS',        icon: `${CDN}/css3/css3-original.svg` },
+      { name: 'JavaScript', icon: `${CDN}/javascript/javascript-original.svg` },
+      { name: 'Python',     icon: `${CDN}/python/python-original.svg` },
+      { name: 'SQL',        icon: `${CDN}/azuresqldatabase/azuresqldatabase-original.svg` },
     ],
   },
   {
     id: 'frontend',
-    title: 'Frontend',
+    title: 'Frontend & Dev Tools',
     skills: [
-      { name: 'React', level: 70 },
-      { name: 'Git', level: 65 },
-      { name: 'GitHub', level: 70 },
+      { name: 'React',   icon: `${CDN}/react/react-original.svg` },
+      { name: 'Vite',    icon: `${CDN}/vitejs/vitejs-original.svg` },
+      { name: 'Git',     icon: `${CDN}/git/git-original.svg` },
+      { name: 'GitHub',  icon: `${CDN}/github/github-original.svg` },
+      { name: 'VS Code', icon: `${CDN}/vscode/vscode-original.svg` },
     ],
   },
   {
-    id: 'data-analytics',
-    title: 'Data Analytics',
+    id: 'data',
+    title: 'Data & Analytics',
     skills: [
-      { name: 'Excel', level: 80 },
-      { name: 'Power BI', level: 60 },
-      { name: 'SQL', level: 70 },
-      { name: 'Tableau', level: 30 },
+      { name: 'Excel',   icon: `${CDN}/microsoftexcel/microsoftexcel-original.svg` },
+      { name: 'Jamovi',  icon: null },   // no devicon — rendered as text initial
+      { name: 'MySQL',   icon: `${CDN}/mysql/mysql-original.svg` },
     ],
   },
   {
-    id: 'tools',
-    title: 'Tools',
+    id: 'design',
+    title: 'Design',
     skills: [
-      { name: 'VS Code', level: 90 },
-      { name: 'Canva', level: 75 },
-      { name: 'Figma', level: 55 },
+      { name: 'Figma',  icon: `${CDN}/figma/figma-original.svg` },
+      { name: 'Canva',  icon: `${CDN}/canva/canva-original.svg` },
     ],
   },
 ]
