@@ -50,6 +50,32 @@ export const projects = [
       { icon: '📊', title: 'Data Analytics',        description: 'Generate reports and visualize key metrics.' },
     ],
   },
+  {
+    id: 1,
+    title: 'Filipiniana',
+    subtitle: 'Filipino Traditional Fashion E-Commerce Web App',
+    description:
+      'Web UI/UX design for Filipiniana, an e-commerce platform for Filipino traditional clothing and accessories. Covers the full shopping experience — login and account creation, browsing by category (dresses, accessories), product listings with ratings and prices, and cart functionality.',
+    technologies: ['Figma', 'UI/UX Design', 'Web Design'],
+    liveUrl: 'https://www.figma.com/design/w1zQEjGKQzWzSBw5z12not/Web-App?node-id=0-1&t=Li2UaHbdUA9C1hny-1',
+    status: 'Completed',
+    accent: '#5C4A1E',
+    accentLight: '#C44536',
+    accentBg: '#FAF6EE',
+    logo: null,
+    mockups: [
+      '/images/projects/filipiniana/filipiniana-1.png',
+      '/images/projects/filipiniana/filipiniana-2.png',
+      '/images/projects/filipiniana/filipiniana-3.png',
+      '/images/projects/filipiniana/filipiniana-4.png',
+    ],
+    features: [
+      { icon: '👘', title: 'Product Catalog',      description: 'Browse Filipino dresses and accessories organized by category with ratings and pricing.' },
+      { icon: '🛒', title: 'Cart & Wishlist',       description: 'Add items to cart or save to wishlist for a smooth shopping experience.' },
+      { icon: '🔐', title: 'Authentication',        description: 'Login and account creation screens with a warm, heritage-inspired design.' },
+      { icon: '🔍', title: 'Product Search',        description: 'Search bar and category filters to quickly find specific items.' },
+    ],
+  },
 ]
 
 export const allTechnologies = [...new Set(projects.flatMap((p) => p.technologies))]
