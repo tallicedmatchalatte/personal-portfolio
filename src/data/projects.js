@@ -17,6 +17,7 @@ export const projects = [
       '/images/projects/brewpoint/order-history.png',
       '/images/projects/brewpoint/login.png',
     ],
+    mockupType: 'phone',
     features: [
       { icon: '☕', title: 'Menu Browsing',       description: 'Explore drinks by category with product images and pricing.' },
       { icon: '🛠️', title: 'Order Customization', description: 'Choose size, temperature, and add-ons before placing an order.' },
@@ -43,6 +44,7 @@ export const projects = [
       '/images/projects/smartevent/menu.png',
       '/images/projects/smartevent/create-account.png',
     ],
+    mockupType: 'phone',
     features: [
       { icon: '📦', title: 'Inventory Management', description: 'Track and manage organization assets and supplies.' },
       { icon: '💰', title: 'Financial Management',  description: 'Monitor income, expenses, and financial records.' },
@@ -69,6 +71,7 @@ export const projects = [
       '/images/projects/filipiniana/filipiniana-3.png',
       '/images/projects/filipiniana/filipiniana-4.png',
     ],
+    mockupType: 'browser',
     features: [
       { icon: '👘', title: 'Product Catalog',      description: 'Browse Filipino dresses and accessories organized by category with ratings and pricing.' },
       { icon: '🛒', title: 'Cart & Wishlist',       description: 'Add items to cart or save to wishlist for a smooth shopping experience.' },

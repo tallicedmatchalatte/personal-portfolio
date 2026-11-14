@@ -4,7 +4,7 @@ import RevealOnScroll from '../common/RevealOnScroll/RevealOnScroll'
 import { FiArrowUpRight } from 'react-icons/fi'
 import './Projects.css'
 
-function MockupDisplay({ mockups, accentBg, title }) {
+function MockupDisplay({ mockups, accentBg, title, mockupType }) {
   const [active, setActive] = useState(0)
 
   if (!mockups || mockups.length === 0) {
@@ -15,17 +15,39 @@ function MockupDisplay({ mockups, accentBg, title }) {
     )
   }
 
+  const isBrowser = mockupType === 'browser'
+
   return (
-    <div className="proj-mockup">
-      {/* Floating phone mockup */}
-      <div className="proj-mockup__phone">
-        <img
-          key={active}
-          src={mockups[active]}
-          alt={`${title} screen`}
-          className="proj-mockup__screen"
-        />
-      </div>
+    <div className={`proj-mockup ${isBrowser ? 'proj-mockup--browser-wrap' : ''}`}>
+      {isBrowser ? (
+        /* ── Browser chrome frame for desktop/web screenshots ── */
+        <div className="proj-mockup__browser">
+          <div className="proj-mockup__browser-bar">
+            <span className="proj-mockup__browser-dot" />
+            <span className="proj-mockup__browser-dot" />
+            <span className="proj-mockup__browser-dot" />
+          </div>
+          <div className="proj-mockup__browser-screen">
+            <img
+              key={active}
+              src={mockups[active]}
+              alt={`${title} screen`}
+              className="proj-mockup__screen"
+            />
+          </div>
+        </div>
+      ) : (
+        /* ── Phone mockup for mobile screenshots ── */
+        <div className="proj-mockup__phone">
+          <img
+            key={active}
+            src={mockups[active]}
+            alt={`${title} screen`}
+            className="proj-mockup__screen"
+          />
+        </div>
+      )}
+
       {/* Thumbnail strip */}
       {mockups.length > 1 && (
         <div className="proj-mockup__strip">
@@ -107,6 +129,7 @@ function ProjectBlock({ project, index }) {
               mockups={project.mockups}
               accentBg={project.accentBg}
               title={project.title}
+              mockupType={project.mockupType}
             />
           </div>
 
@@ -121,7 +144,6 @@ function Projects() {
     <section id="projects" className="projects">
       <div className="projects__container">
         <RevealOnScroll>
-          <span className="section-label">// projects</span>
           <h2 className="projects__heading">
             My <span className="highlight">Projects</span>
           </h2>

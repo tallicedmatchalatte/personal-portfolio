@@ -15,9 +15,6 @@ function About() {
     <section id="about" className="about-mini">
       <div className="about-mini__container">
         <RevealOnScroll>
-          <div style={{ textAlign: 'center' }}>
-            <span className="section-label">// about</span>
-          </div>
           <h2 className="about-mini__heading">
             About <span className="highlight">Me</span>
           </h2>

@@ -22,7 +22,6 @@ function Skills() {
     <section id="skills" className="skills">
       <div className="skills__container">
         <RevealOnScroll>
-          <span className="section-label">// skills</span>
           <h2 className="skills__heading">
             Tools & <span className="highlight">Technologies</span>
           </h2>

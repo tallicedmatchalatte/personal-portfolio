@@ -7,7 +7,6 @@ function Experience() {
     <section id="experience" className="experience">
       <div className="experience__container">
         <RevealOnScroll>
-          <span className="section-label">// experience</span>
           <h2 className="experience__heading">
             My <span className="gradient-text">Experience</span>
           </h2>

@@ -8,7 +8,6 @@ function Certifications() {
     <section id="certifications" className="certifications">
       <div className="certifications__container">
         <RevealOnScroll>
-          <span className="section-label">// certifications</span>
           <h2 className="certifications__heading">
             My <span className="highlight">Certifications</span>
           </h2>

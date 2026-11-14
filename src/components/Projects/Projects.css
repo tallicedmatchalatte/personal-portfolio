@@ -178,6 +178,11 @@
   justify-content: center;
 }
 
+/* When the mockup is a browser (wide), let it use full available width */
+.proj-block__right:has(.proj-mockup--browser-wrap) {
+  align-items: flex-start;
+}
+
 .proj-mockup {
   display: flex;
   flex-direction: column;
@@ -240,6 +245,12 @@
   flex-shrink: 0;
 }
 
+/* Wider thumbs for browser/landscape screenshots */
+.proj-mockup--browser-wrap .proj-mockup__thumb {
+  width: 80px;
+  height: 50px;
+}
+
 .proj-mockup__thumb img {
   width: 100%;
   height: 100%;
@@ -274,6 +285,61 @@
   color: var(--color-text-muted);
   letter-spacing: 0.04em;
   opacity: 0.6;
+}
+
+/* ===== Browser mockup (for web/desktop screenshots) ===== */
+.proj-mockup--browser-wrap {
+  width: 100%;
+}
+
+.proj-mockup__browser {
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow:
+    0 20px 48px rgba(0,0,0,0.12),
+    0 6px 18px rgba(0,0,0,0.07);
+  background: var(--color-bg-primary);
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+.proj-mockup__browser:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 28px 60px rgba(0,0,0,0.15),
+    0 10px 24px rgba(0,0,0,0.09);
+}
+
+/* Top bar mimicking a browser chrome */
+.proj-mockup__browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.proj-mockup__browser-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-border-strong);
+}
+
+.proj-mockup__browser-dot:nth-child(1) { background: #FF5F57; }
+.proj-mockup__browser-dot:nth-child(2) { background: #FEBC2E; }
+.proj-mockup__browser-dot:nth-child(3) { background: #28C840; }
+
+.proj-mockup__browser-screen {
+  overflow: hidden;
+  line-height: 0;
+}
+
+.proj-mockup__browser-screen .proj-mockup__screen {
+  width: 100%;
+  display: block;
 }
 
 /* ===== Status badge ===== */
