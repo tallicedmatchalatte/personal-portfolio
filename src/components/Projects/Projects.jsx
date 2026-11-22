@@ -1,11 +1,33 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { projects } from '../../data/projects'
 import RevealOnScroll from '../common/RevealOnScroll/RevealOnScroll'
-import { FiArrowUpRight } from 'react-icons/fi'
+import { FiArrowUpRight, FiX } from 'react-icons/fi'
 import './Projects.css'
 
 function MockupDisplay({ mockups, accentBg, title, mockupType }) {
   const [active, setActive] = useState(0)
+  const [isOpen, setIsOpen] = useState(false)
+  const previewRef = useRef(null)
+
+  useEffect(() => {
+    if (!isOpen) return undefined
+
+    const previousOverflow = document.body.style.overflow
+    const preview = previewRef.current
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setIsOpen(false)
+    }
+
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+      preview?.focus()
+    }
+  }, [isOpen])
 
   if (!mockups || mockups.length === 0) {
     return (
@@ -18,37 +40,30 @@ function MockupDisplay({ mockups, accentBg, title, mockupType }) {
   const isBrowser = mockupType === 'browser'
 
   return (
-    <div className={`proj-mockup ${isBrowser ? 'proj-mockup--browser-wrap' : ''}`}>
-      {isBrowser ? (
-        /* ── Browser chrome frame for desktop/web screenshots ── */
-        <div className="proj-mockup__browser">
-          <div className="proj-mockup__browser-bar">
-            <span className="proj-mockup__browser-dot" />
-            <span className="proj-mockup__browser-dot" />
-            <span className="proj-mockup__browser-dot" />
-          </div>
-          <div className="proj-mockup__browser-screen">
+    <div className={`proj-mockup ${isBrowser ? 'proj-mockup--browser' : 'proj-mockup--phone'}`}>
+      <div className="proj-mockup__frame">
+        <div className="proj-mockup__framebar">
+          <span>{String(active + 1).padStart(2, '0')} / {String(mockups.length).padStart(2, '0')}</span>
+          <span>SCREEN / {title}</span>
+        </div>
+        <div className="proj-mockup__image">
+          <button
+            ref={previewRef}
+            className="proj-mockup__open"
+            onClick={() => setIsOpen(true)}
+            aria-label={`Open ${title} screen ${active + 1} full size`}
+          >
             <img
               key={active}
               src={mockups[active]}
-              alt={`${title} screen`}
+              alt={`${title} screen ${active + 1}`}
               className="proj-mockup__screen"
             />
-          </div>
+            <span className="proj-mockup__zoom-hint">Open image ↗</span>
+          </button>
         </div>
-      ) : (
-        /* ── Phone mockup for mobile screenshots ── */
-        <div className="proj-mockup__phone">
-          <img
-            key={active}
-            src={mockups[active]}
-            alt={`${title} screen`}
-            className="proj-mockup__screen"
-          />
-        </div>
-      )}
+      </div>
 
-      {/* Thumbnail strip */}
       {mockups.length > 1 && (
         <div className="proj-mockup__strip">
           {mockups.map((src, i) => (
@@ -56,12 +71,43 @@ function MockupDisplay({ mockups, accentBg, title, mockupType }) {
               key={i}
               className={`proj-mockup__thumb ${active === i ? 'proj-mockup__thumb--active' : ''}`}
               onClick={() => setActive(i)}
+              aria-pressed={active === i}
               aria-label={`View screen ${i + 1}`}
             >
               <img src={src} alt={`Screen ${i + 1}`} />
             </button>
           ))}
         </div>
+      )}
+
+      {isOpen && createPortal(
+        <div className="proj-lightbox" onClick={() => setIsOpen(false)}>
+          <div
+            className="proj-lightbox__dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${title} screenshot`}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="proj-lightbox__toolbar">
+              <span>{title} / SCREEN {String(active + 1).padStart(2, '0')}</span>
+              <button
+                className="proj-lightbox__close"
+                onClick={() => setIsOpen(false)}
+                aria-label="Close image preview"
+                autoFocus
+              >
+                <FiX />
+              </button>
+            </div>
+            <img
+              src={mockups[active]}
+              alt={`${title} screen ${active + 1} full size`}
+              className="proj-lightbox__image"
+            />
+          </div>
+        </div>,
+        document.body,
       )}
     </div>
   )
@@ -78,8 +124,12 @@ function ProjectBlock({ project, index }) {
 
             {/* Logo + title row — mirrors the reference */}
             <div className="proj-block__identity">
-              {project.logo && (
-                <img src={project.logo} alt={`${project.title} logo`} className="proj-block__logo" />
+              {project.logo ? (
+                <img src={project.logo} alt="" className="proj-block__logo" />
+              ) : (
+                <span className="proj-block__number" aria-hidden="true">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
               )}
               <div>
                 <h3 className="proj-block__title" style={{ color: project.accent }}>{project.title}</h3>
@@ -144,9 +194,14 @@ function Projects() {
     <section id="projects" className="projects">
       <div className="projects__container">
         <RevealOnScroll>
-          <h2 className="projects__heading">
-            My <span className="highlight">Projects</span>
-          </h2>
+          <div className="projects__headingbar">
+            <h2 className="projects__heading">
+              Selected <span className="highlight">Work</span>
+            </h2>
+            <span className="projects__count">
+              {String(projects.length).padStart(2, '0')} CASE STUDIES
+            </span>
+          </div>
           <p className="projects__subheading">A selection of things I've designed and built</p>
         </RevealOnScroll>
 

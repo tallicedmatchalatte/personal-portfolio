@@ -1,76 +1,51 @@
 :root {
-  /* ===== Figma canvas palette ===== */
-  --color-bg-canvas:     #e8e8e8;   /* Figma canvas gray */
-  --color-bg-primary:    #ffffff;   /* white panels / cards */
-  --color-bg-secondary:  #f2f2f2;   /* slightly off-white sections */
-  --color-bg-tertiary:   #e8e8e8;   /* deepest bg level */
-
-  --color-text-primary:   #111112;
-  --color-text-secondary: #52525b;
-  --color-text-muted:     #a1a1aa;
-
-  /* Figma-inspired accent palette — used ONLY as decorative/highlight */
-  --figma-yellow:   #FFCD29;
-  --figma-blue:     #5C8FFF;
-  --figma-coral:    #FF6B6B;
-  --figma-purple:   #9747FF;
-  --figma-green:    #1BC47D;
-
-  /* UI accent — still neutral so chrome stays invisible */
-  --color-accent-primary:   #111112;
-  --color-accent-secondary: #3f3f46;
-  --color-accent-glow:      rgba(24, 24, 27, 0.08);
-
-  --color-success: #16a34a;
-  --color-warning: #d97706;
-  --color-border:        #d9d9d9;
-  --color-border-strong: #c4c4c4;
-
-  /* ===== Gradients ===== */
-  --gradient-primary: linear-gradient(135deg, #111112 0%, #52525b 100%);
-  --gradient-text:    linear-gradient(135deg, #111112 0%, #52525b 100%);
-
-  /* ===== Card / surface ===== */
-  --glass-bg:     #ffffff;
-  --glass-border: 1px solid #d9d9d9;
-
-  /* ===== Shadows ===== */
-  --shadow-soft:       0 1px 4px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.05);
-  --shadow-card-hover: 0 4px 24px rgba(0,0,0,0.12);
-
-  /* ===== Typography ===== */
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono:    'DM Mono', 'JetBrains Mono', monospace;
-
-  --fs-xs:   0.6875rem;
-  --fs-sm:   0.8125rem;
-  --fs-base: 0.9375rem;
-  --fs-lg:   1.0625rem;
-  --fs-xl:   1.375rem;
-  --fs-2xl:  1.875rem;
-  --fs-3xl:  2.5rem;
-  --fs-4xl:  3.25rem;
-
-  /* ===== Spacing ===== */
-  --space-xs:  0.5rem;
-  --space-sm:  1rem;
-  --space-md:  1.5rem;
-  --space-lg:  2.5rem;
-  --space-xl:  4rem;
+  --color-bg-primary: #f4e9d2;
+  --color-bg-secondary: #f4b51f;
+  --color-bg-card: #f8edda;
+  --color-bg-card-hover: #fff;
+  --color-text-primary: #203b2c;
+  --color-text-secondary: #375541;
+  --color-text-muted: #94634e;
+  --color-accent-primary: #c94f32;
+  --color-accent-secondary: #3f824b;
+  --color-accent-glow: #c94f3233;
+  --color-success: #3f824b;
+  --color-warning: #a56300;
+  --color-border: #203b2c;
+  --color-border-soft: #d4c3a5;
+  --gradient-primary: linear-gradient(135deg, #c94f32 0%, #e27a36 100%);
+  --gradient-text: none;
+  --gradient-bg-glow: none;
+  --glass-bg: #fffdf8;
+  --glass-border: 2px solid #171717;
+  --glass-blur: none;
+  --shadow-soft: 5px 5px 0 #203b2c;
+  --shadow-glow: 0 0 0 3px #3f824b;
+  --shadow-card-hover: 8px 8px 0 #203b2c;
+  --font-primary: "Trebuchet MS", Arial, sans-serif;
+  --font-display: "Cooper Black", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
+  --font-mono: "Courier New", monospace;
+  --fs-xs: .75rem;
+  --fs-sm: .875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: 2.5rem;
+  --fs-3xl: 4rem;
+  --fs-4xl: 6rem;
+  --space-xs: .5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
   --space-2xl: 6rem;
-
-  /* ===== Radius ===== */
-  --radius-sm:   6px;
-  --radius-md:   10px;
-  --radius-lg:   16px;
-  --radius-full: 999px;
-
-  /* ===== Transitions ===== */
-  --transition-fast: 0.15s ease;
-  --transition-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-
-  /* ===== Layout ===== */
-  --max-width:     1160px;
-  --navbar-height: 56px;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-full: 0;
+  --transition-fast: .15s ease-out;
+  --transition-base: .2s ease-out;
+  --transition-slow: .35s ease-out;
+  --max-width: 1160px;
+  --navbar-height: 72px;
 }

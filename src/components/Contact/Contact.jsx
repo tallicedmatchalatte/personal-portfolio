@@ -7,7 +7,6 @@ function Contact() {
   return (
     <section id="contact" className="contact">
       <div className="contact__container">
-        <span className="section-label">// contact</span>
         <h2 className="contact__heading">
           Get In <span className="highlight">Touch</span>
         </h2>

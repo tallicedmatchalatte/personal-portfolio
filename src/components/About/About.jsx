@@ -5,8 +5,8 @@ import './About.css'
 const chips = [
   { label: 'Degree',       value: 'BSIT' },
   { label: 'School',       value: 'LCUP' },
-  { label: 'Year',         value: '2nd Year' },
-  { label: 'Focus',        value: 'UI/UX + Data' },
+  { label: 'Year',         value: '4th Year' },
+  { label: 'Focus',        value: 'UI/UX + Data + Frontend' },
   { label: 'Status',       value: 'Open to Internship' },
 ]
 
