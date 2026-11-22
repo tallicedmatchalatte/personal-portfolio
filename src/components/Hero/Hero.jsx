@@ -5,7 +5,7 @@ import { FiArrowDown, FiDownload } from 'react-icons/fi'
 import './Hero.css'
 
 function Hero() {
-  const typedText = useTypingEffect(['Frontend Developer', 'Aspiring Data Analyst'], 90, 50, 1600)
+  const typedText = useTypingEffect(['UI/UX Designer', 'Frontend Developer'], 90, 50, 1600)
 
   return (
     <section id="home" className="hero">
@@ -50,8 +50,8 @@ function Hero() {
                 <span className="hero__cursor">_</span>
               </h2>
               <p className="hero__description">
-                BSIT student focused on data analytics and frontend development.
-                Building real things, learning every step of the way.
+                BSIT student focused on UI/UX design and frontend development.
+                I enjoy turning ideas into thoughtful interfaces and bringing them to life on the web.
               </p>
               <div className="hero__actions">
                 <a href="#projects" className="btn btn--primary">

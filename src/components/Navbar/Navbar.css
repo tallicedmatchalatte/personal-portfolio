@@ -20,7 +20,6 @@
   margin: 0 auto;
   padding: 0 0 0 22px;
   display: flex;
-  max-width: var(--max-width);
 }
 
 .navbar__logo {

@@ -19,10 +19,10 @@ export const projects = [
     ],
     mockupType: 'phone',
     features: [
-      { icon: '☕', title: 'Menu Browsing',       description: 'Explore drinks by category with product images and pricing.' },
-      { icon: '🛠️', title: 'Order Customization', description: 'Choose size, temperature, and add-ons before placing an order.' },
-      { icon: '🧾', title: 'Order History',        description: 'Review past orders any time from a dedicated history screen.' },
-      { icon: '🔐', title: 'Authentication',       description: 'Login and account creation for a personalized experience.' },
+      { icon: 'coffee', title: 'Menu Browsing',       description: 'Explore drinks by category with product images and pricing.' },
+      { icon: 'customization', title: 'Order Customization', description: 'Choose size, temperature, and add-ons before placing an order.' },
+      { icon: 'receipt', title: 'Order History',        description: 'Review past orders any time from a dedicated history screen.' },
+      { icon: 'lock', title: 'Authentication',       description: 'Login and account creation for a personalized experience.' },
     ],
   },
   {
@@ -30,7 +30,7 @@ export const projects = [
     title: 'SMARTEVENT',
     subtitle: 'Mobile-Based Student Organization Management System',
     description:
-      'Designed the mobile UI/UX for SMARTEVENT, a capstone thesis project — covering inventory, financial management, event monitoring, and data analytics reporting for student organizations.',
+      'Designed the mobile UI/UX for SMARTEVENT, a capstone thesis project — covering inventory, finance, event management, and analytics reporting for student organizations.',
     technologies: ['Figma', 'UI/UX Design', 'Mobile Design'],
     liveUrl: 'https://www.figma.com/design/D6DeFitUtNKxoUpBG3WDnL/Mobile-App?node-id=120-33&t=HhgU5qs23TJIV1HI-4',
     status: 'Completed',
@@ -46,10 +46,10 @@ export const projects = [
     ],
     mockupType: 'phone',
     features: [
-      { icon: '📦', title: 'Inventory Management', description: 'Track and manage organization assets and supplies.' },
-      { icon: '💰', title: 'Financial Management',  description: 'Monitor income, expenses, and financial records.' },
-      { icon: '📅', title: 'Event Monitoring',      description: 'Create, manage, and track event status in real time.' },
-      { icon: '📊', title: 'Data Analytics',        description: 'Generate reports and visualize key metrics.' },
+      { icon: 'inventory', title: 'Inventory Management', description: 'Track and manage organization assets and supplies.' },
+      { icon: 'finance', title: 'Finance Management',  description: 'Organize budgets and monitor organization expenses.' },
+      { icon: 'event', title: 'Event Management',      description: 'Create, manage, and track event status in real time.' },
+      { icon: 'analytics', title: 'Analytics & Reports', description: 'Generate reports and visualize key organizational metrics.' },
     ],
   },
   {
@@ -64,7 +64,7 @@ export const projects = [
     accent: '#5C4A1E',
     accentLight: '#C44536',
     accentBg: '#FAF6EE',
-    logo: null,
+    logo: '/images/projects/filipiniana/logo.svg',
     mockups: [
       '/images/projects/filipiniana/filipiniana-1.png',
       '/images/projects/filipiniana/filipiniana-2.png',
@@ -73,10 +73,10 @@ export const projects = [
     ],
     mockupType: 'browser',
     features: [
-      { icon: '👘', title: 'Product Catalog',      description: 'Browse Filipino dresses and accessories organized by category with ratings and pricing.' },
-      { icon: '🛒', title: 'Cart & Wishlist',       description: 'Add items to cart or save to wishlist for a smooth shopping experience.' },
-      { icon: '🔐', title: 'Authentication',        description: 'Login and account creation screens with a warm, heritage-inspired design.' },
-      { icon: '🔍', title: 'Product Search',        description: 'Search bar and category filters to quickly find specific items.' },
+      { icon: 'clothing', title: 'Product Catalog',      description: 'Browse Filipino dresses and accessories organized by category with ratings and pricing.' },
+      { icon: 'shopping', title: 'Cart & Wishlist',       description: 'Add items to cart or save to wishlist for a smooth shopping experience.' },
+      { icon: 'lock', title: 'Authentication',        description: 'Login and account creation screens with a warm, heritage-inspired design.' },
+      { icon: 'search', title: 'Product Search',        description: 'Search bar and category filters to quickly find specific items.' },
     ],
   },
 ]

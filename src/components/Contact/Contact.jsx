@@ -1,9 +1,33 @@
+import { useEffect, useState } from 'react'
 import { contactInfo } from '../../data/contactInfo'
-import { FiMail, FiLinkedin, FiPhone, FiDownload } from 'react-icons/fi'
+import { FiCheck, FiCopy, FiDownload, FiLinkedin, FiMail, FiPhone } from 'react-icons/fi'
 import { FaFacebookF } from 'react-icons/fa'
 import './Contact.css'
 
 function Contact() {
+  const [copyStatus, setCopyStatus] = useState('')
+
+  useEffect(() => {
+    if (!copyStatus) return undefined
+
+    const timeoutId = window.setTimeout(() => setCopyStatus(''), 2400)
+    return () => window.clearTimeout(timeoutId)
+  }, [copyStatus])
+
+  const handleCopyEmail = async () => {
+    if (!navigator.clipboard?.writeText) {
+      setCopyStatus('unavailable')
+      return
+    }
+
+    try {
+      await navigator.clipboard.writeText(contactInfo.email)
+      setCopyStatus('copied')
+    } catch {
+      setCopyStatus('failed')
+    }
+  }
+
   return (
     <section id="contact" className="contact">
       <div className="contact__container">
@@ -15,11 +39,28 @@ function Contact() {
         </p>
 
         <div className="contact__grid">
-          <a href={`mailto:${contactInfo.email}`} className="contact-card glass-card">
+          <div className="contact-card contact-card--email glass-card">
             <FiMail className="contact-card__icon" />
             <span className="contact-card__label">Email</span>
-            <span className="contact-card__value">{contactInfo.email}</span>
-          </a>
+            <div className="contact-card__email-row">
+              <a href={`mailto:${contactInfo.email}`} className="contact-card__value">{contactInfo.email}</a>
+              <button
+                type="button"
+                className="contact-card__copy"
+                onClick={handleCopyEmail}
+                aria-label={copyStatus === 'copied' ? 'Email copied' : 'Copy email address'}
+              >
+                {copyStatus === 'copied' ? <FiCheck aria-hidden="true" /> : <FiCopy aria-hidden="true" />}
+                <span>{copyStatus === 'copied' ? 'Copied' : 'Copy'}</span>
+              </button>
+            </div>
+            {copyStatus && (
+              <span className="contact-card__copy-status" role="status" aria-live="polite">
+                {copyStatus === 'copied' && 'Email copied to clipboard'}
+                {(copyStatus === 'unavailable' || copyStatus === 'failed') && 'Could not copy. Select the email above instead.'}
+              </span>
+            )}
+          </div>
 
           <a href={contactInfo.linkedin} target="_blank" rel="noopener noreferrer" className="contact-card glass-card">
             <FiLinkedin className="contact-card__icon" />

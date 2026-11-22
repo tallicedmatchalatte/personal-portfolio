@@ -1,23 +1,44 @@
+import { useState } from 'react'
 import { skillCategories } from '../../data/skills'
 import RevealOnScroll from '../common/RevealOnScroll/RevealOnScroll'
+import { FiPause, FiPlay } from 'react-icons/fi'
 import './Skills.css'
 
-function SkillIcon({ name, icon }) {
+function SkillIcon({ skill, selected, isDuplicate, onSelect }) {
   return (
-    <div className="skill-icon">
-      <div className="skill-icon__wrap">
-        {icon ? (
-          <img src={icon} alt={name} className="skill-icon__img" loading="lazy" />
+    <button
+      type="button"
+      className={`skill-icon ${selected ? 'skill-icon--selected' : ''}`}
+      onClick={() => onSelect(skill)}
+      aria-label={`Select ${skill.name} skill`}
+      aria-pressed={selected}
+      tabIndex={isDuplicate ? -1 : 0}
+    >
+      <span className="skill-icon__wrap">
+        {skill.icon ? (
+          <img src={skill.icon} alt="" className="skill-icon__img" loading="lazy" />
         ) : (
-          <span className="skill-icon__initial">{name.charAt(0)}</span>
+          <span className="skill-icon__initial">{skill.name.charAt(0)}</span>
         )}
-      </div>
-      <span className="skill-icon__name">{name}</span>
-    </div>
+      </span>
+      <span className="skill-icon__name">{skill.name}</span>
+    </button>
   )
 }
 
 function Skills() {
+  const skills = skillCategories.flatMap((category) =>
+    category.skills.map((skill) => ({ ...skill, category: category.title })),
+  )
+  const scrollDuration = Math.max(26, skills.length * 3.2)
+  const [isPlaying, setIsPlaying] = useState(true)
+  const [selectedSkill, setSelectedSkill] = useState(null)
+
+  const handleSkillSelect = (skill) => {
+    setSelectedSkill(skill)
+    setIsPlaying(false)
+  }
+
   return (
     <section id="skills" className="skills">
       <div className="skills__container">
@@ -28,20 +49,49 @@ function Skills() {
           <p className="skills__subheading">What I use to design and build</p>
         </RevealOnScroll>
 
-        <div className="skills__grid">
-          {skillCategories.map((category, ci) => (
-            <RevealOnScroll key={category.id} delay={`${ci * 0.08}s`}>
-              <div className="skills__category">
-                <p className="skills__category-title">{category.title}</p>
-                <div className="skills__icon-row">
-                  {category.skills.map((skill) => (
-                    <SkillIcon key={skill.name} name={skill.name} icon={skill.icon} />
-                  ))}
-                </div>
+        <RevealOnScroll>
+          <div className="skills__panel">
+            <div className="skills__panel-header">
+              <span><b>01</b> / DESIGN + FRONTEND TOOLKIT</span>
+              <button
+                type="button"
+                className="skills__play-toggle"
+                onClick={() => setIsPlaying((playing) => !playing)}
+                aria-label={isPlaying ? 'Pause skills carousel' : 'Play skills carousel'}
+              >
+                {isPlaying ? <FiPause aria-hidden="true" /> : <FiPlay aria-hidden="true" />}
+                <span>{isPlaying ? 'Pause' : 'Play'}</span>
+              </button>
+            </div>
+            <div className="skills__carousel" role="region" aria-label="Design and frontend skills">
+              <div
+                className="skills__track"
+                style={{
+                  '--skills-duration': `${scrollDuration}s`,
+                  animationPlayState: isPlaying ? 'running' : 'paused',
+                }}
+              >
+                {[0, 1].map((copy) => (
+                  <div className="skills__items" key={copy} aria-hidden={copy === 1}>
+                    {skills.map((skill) => (
+                      <SkillIcon
+                        key={skill.name}
+                        skill={skill}
+                        selected={selectedSkill?.name === skill.name}
+                        isDuplicate={copy === 1}
+                        onSelect={handleSkillSelect}
+                      />
+                    ))}
+                  </div>
+                ))}
               </div>
-            </RevealOnScroll>
-          ))}
-        </div>
+            </div>
+            <div className="skills__panel-footer" aria-live="polite">
+              <span>{selectedSkill ? `SELECTED / ${selectedSkill.name}` : 'SELECT A SKILL TO EXPLORE'}</span>
+              <span>{selectedSkill ? selectedSkill.category : `${skills.length} SKILLS / ONE CONTINUOUS TRACK`}</span>
+            </div>
+          </div>
+        </RevealOnScroll>
       </div>
     </section>
   )

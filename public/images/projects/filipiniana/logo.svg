@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <title>Filipiniana</title>
+  <rect x="4" y="4" width="120" height="120" fill="#FAF6EE" stroke="#5C4A1E" stroke-width="6"/>
+  <path d="M31 99V29h50M32 59h39" fill="none" stroke="#5C4A1E" stroke-width="9" stroke-linecap="square"/>
+  <g fill="#C44536" stroke="#5C4A1E" stroke-width="2">
+    <ellipse cx="91" cy="79" rx="6" ry="11"/>
+    <ellipse cx="91" cy="79" rx="6" ry="11" transform="rotate(72 91 79)"/>
+    <ellipse cx="91" cy="79" rx="6" ry="11" transform="rotate(144 91 79)"/>
+    <ellipse cx="91" cy="79" rx="6" ry="11" transform="rotate(216 91 79)"/>
+    <ellipse cx="91" cy="79" rx="6" ry="11" transform="rotate(288 91 79)"/>
+  </g>
+  <circle cx="91" cy="79" r="4" fill="#F4B51F" stroke="#5C4A1E" stroke-width="2"/>
+  <path d="M78 105h26" stroke="#C44536" stroke-width="4" stroke-linecap="square"/>
+</svg>

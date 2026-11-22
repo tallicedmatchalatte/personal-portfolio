@@ -1,7 +1,7 @@
 export const aboutSummary = {
   photo: '/images/profile/profile.jpg', // drop your photo in public/images/profile/
-  bio: "I'm a BSIT student who enjoys both sides of tech — making sense of data and building the interfaces that present it. Still learning, still building, one project at a time.",
-  skills: ['React', 'JavaScript', 'SQL', 'Power BI', 'Python', 'HTML & CSS'],
+  bio: "I'm a BSIT student focused on UI/UX and frontend development. I enjoy shaping ideas into thoughtful experiences—from mapping user flows in Figma to bringing them to life with code.",
+  skills: ['Figma', 'React', 'JavaScript', 'HTML & CSS'],
   education: {
     degree: 'Bachelor of Science in Information Technology (BSIT)',
     school: 'La Consolacion University Philippines (LCUP)',

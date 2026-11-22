@@ -3,7 +3,46 @@ import { createPortal } from 'react-dom'
 import { projects } from '../../data/projects'
 import RevealOnScroll from '../common/RevealOnScroll/RevealOnScroll'
 import { FiArrowUpRight, FiX } from 'react-icons/fi'
+import {
+  FaBoxes,
+  FaCalendarAlt,
+  FaChartLine,
+  FaCoffee,
+  FaHeart,
+  FaLock,
+  FaReceipt,
+  FaSearch,
+  FaShoppingCart,
+  FaThermometerHalf,
+  FaTools,
+  FaTshirt,
+  FaWallet,
+} from 'react-icons/fa'
 import './Projects.css'
+
+const featureIcons = {
+  coffee: <FaCoffee aria-hidden="true" />,
+  customization: (
+    <span className="proj-feature__icon-pair" aria-hidden="true">
+      <FaTools />
+      <FaThermometerHalf />
+    </span>
+  ),
+  receipt: <FaReceipt aria-hidden="true" />,
+  lock: <FaLock aria-hidden="true" />,
+  inventory: <FaBoxes aria-hidden="true" />,
+  finance: <FaWallet aria-hidden="true" />,
+  event: <FaCalendarAlt aria-hidden="true" />,
+  analytics: <FaChartLine aria-hidden="true" />,
+  clothing: <FaTshirt aria-hidden="true" />,
+  shopping: (
+    <span className="proj-feature__icon-pair" aria-hidden="true">
+      <FaShoppingCart />
+      <FaHeart />
+    </span>
+  ),
+  search: <FaSearch aria-hidden="true" />,
+}
 
 function MockupDisplay({ mockups, accentBg, title, mockupType }) {
   const [active, setActive] = useState(0)
@@ -115,7 +154,7 @@ function MockupDisplay({ mockups, accentBg, title, mockupType }) {
 
 function ProjectBlock({ project, index }) {
   return (
-    <RevealOnScroll delay={`${index * 0.1}s`}>
+    <RevealOnScroll delay={`${index * 0.1}s`} className="projects__scroll-reveal">
       <div className="proj-block" style={{ '--proj-accent': project.accent, '--proj-accent-bg': project.accentBg }}>
         <div className="proj-block__inner">
 
@@ -144,7 +183,7 @@ function ProjectBlock({ project, index }) {
               {project.features.map((f, i) => (
                 <div key={i} className="proj-feature">
                   <div className="proj-feature__icon-wrap" style={{ background: project.accentBg, color: project.accent }}>
-                    {f.icon}
+                    {featureIcons[f.icon] || f.icon}
                   </div>
                   <div>
                     <p className="proj-feature__title">{f.title}</p>
@@ -193,7 +232,7 @@ function Projects() {
   return (
     <section id="projects" className="projects">
       <div className="projects__container">
-        <RevealOnScroll>
+        <RevealOnScroll className="projects__scroll-reveal">
           <div className="projects__headingbar">
             <h2 className="projects__heading">
               Selected <span className="highlight">Work</span>

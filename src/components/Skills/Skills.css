@@ -26,58 +26,99 @@
   margin-bottom: 32px;
 }
 
-.skills__grid {
-  grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 14px;
-  display: grid;
-}
-
-.skills__category {
+.skills__panel {
   border: 2px solid var(--color-border);
   background: var(--color-bg-card);
-  min-height: 160px;
-  box-shadow: 4px 4px 0 var(--color-border);
-  padding: 22px;
+  box-shadow: 7px 7px 0 var(--color-border);
 }
 
-.skills__category-title {
-  border-bottom: 1px solid var(--color-border-soft);
-  color: var(--color-text-muted);
-  font: 700 .76rem var(--font-mono);
-  letter-spacing: .07em;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-  padding-bottom: 9px;
-}
-
-.skills__icon-row {
-  flex-wrap: wrap;
-  gap: 14px;
+.skills__panel-header,
+.skills__panel-footer {
+  color: var(--color-text-secondary);
+  background: var(--color-bg-primary);
+  font: 700 .7rem var(--font-mono);
+  letter-spacing: .04em;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
   display: flex;
+}
+
+.skills__panel-header {
+  border-bottom: 2px solid var(--color-border);
+}
+
+.skills__panel-header b {
+  color: var(--color-accent-primary);
+}
+
+.skills__play-toggle {
+  border: 2px solid var(--color-border);
+  background: var(--color-accent-primary);
+  color: #fff;
+  min-width: 84px;
+  min-height: 34px;
+  font: 700 .68rem var(--font-mono);
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 9px;
+  display: inline-flex;
+}
+
+.skills__play-toggle:hover {
+  background: var(--color-border);
+}
+
+.skills__carousel {
+  min-width: 0;
+  overflow: hidden;
+  background: #347843;
+  padding: 20px 0;
+}
+
+.skills__track,
+.skills__items {
+  width: max-content;
+  display: flex;
+}
+
+.skills__track {
+  animation: skills-slide var(--skills-duration, 22s) linear infinite;
+}
+
+.skills__items {
+  align-items: center;
+  gap: clamp(30px, 5vw, 64px);
+  padding-right: clamp(30px, 5vw, 64px);
 }
 
 .skill-icon {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  flex: 0 0 88px;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   display: flex;
+  padding: 4px 0;
 }
 
 .skill-icon__wrap {
-  border: 2px solid var(--color-border);
-  width: 48px;
-  height: 48px;
-  box-shadow: 3px 3px 0 var(--color-border);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-  background: #fff;
+  width: 52px;
+  height: 52px;
+  transition: transform var(--transition-fast), filter var(--transition-fast);
   place-items: center;
-  padding: 9px;
   display: grid;
 }
 
-.skill-icon:hover .skill-icon__wrap {
-  box-shadow: 1px 1px 0 var(--color-border);
-  transform: translate(2px,2px);
+.skill-icon:hover .skill-icon__wrap,
+.skill-icon--selected .skill-icon__wrap {
+  filter: drop-shadow(0 4px 0 #203b2c);
+  transform: translateY(-5px) scale(1.12);
 }
 
 .skill-icon__img {
@@ -93,14 +134,33 @@
 }
 
 .skill-icon__name {
-  color: var(--color-text-secondary);
-  font: .7rem var(--font-mono);
+  color: #f8edda;
+  font: 700 .76rem var(--font-mono);
   white-space: nowrap;
+  transition: color var(--transition-fast);
 }
 
-@media (width<=700px) {
-  .skills__grid {
-    grid-template-columns: 1fr;
+.skill-icon:hover .skill-icon__name,
+.skill-icon--selected .skill-icon__name {
+  color: #f4b51f;
+}
+
+.skill-icon:focus-visible {
+  outline: 2px solid #f4b51f;
+  outline-offset: 4px;
+}
+
+.skills__panel-footer {
+  border-top: 2px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: .62rem;
+  min-height: 38px;
+  flex-wrap: wrap;
+}
+
+@keyframes skills-slide {
+  to {
+    transform: translateX(-50%);
   }
 }
 
@@ -116,8 +176,24 @@
   }
 }
 
-@media (width<=520px) {
-  .skills__category {
-    padding: 18px;
+@media (width<=420px) {
+  .skills__panel-header,
+  .skills__panel-footer {
+    font-size: .58rem;
+    padding-inline: 9px;
+  }
+
+  .skills__play-toggle {
+    min-width: 70px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .skills__carousel {
+    overflow-x: auto;
+  }
+
+  .skills__track {
+    animation: none;
   }
 }

@@ -34,4 +34,12 @@ export const certifications = [
     image: '/images/certifications/access-2019-expert.png',
     credentialUrl: 'https://verify.certiport.com/?code=L4eh-sFpX',
   },
+  {
+    id: 4,
+    name: 'Device Configuration and Management',
+    organization: 'Certiport / Information Technology Specialist',
+    date: 'November 19, 2026',
+    image: '/images/certifications/device-configuration-management.png',
+    credentialUrl: 'https://verify.certiport.com/?code=sCmA-XM3D',
+  },
 ]
